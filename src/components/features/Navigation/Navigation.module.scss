@@ -1,0 +1,57 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  padding: 0 $container-padding;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  height: 200px;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 100;
+
+  div {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 10px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    background: white;
+  }
+
+  a {
+    opacity: 80%;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .active {
+    opacity: 100%;
+  }
+
+  a:hover {
+    text-decoration: none;
+    opacity: 100%;
+    transition: all 0.5s ease-in-out;
+  }
+
+  a:first-child {
+    color: $color-red;
+  }
+
+  a:nth-child(2) {
+    color: $color-green;
+  }
+
+  a:nth-child(3) {
+    color: $color-orange;
+  }
+
+  a:nth-child(4) {
+    color: $color-purple;
+  }
+}
+
+

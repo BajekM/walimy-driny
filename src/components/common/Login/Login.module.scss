@@ -1,0 +1,22 @@
+@import '../../../styles/settings.scss';
+
+.root {
+
+  display: flex;
+  align-items: center;
+
+  * {
+    margin: 10px;
+  }
+
+  i {
+    color: $color-googlebtn;
+    font-size: 40px;
+  }
+
+  span {
+    font-size: 15px;
+    color: $color-googlebtn;
+    font-weight: bold;
+  }
+}

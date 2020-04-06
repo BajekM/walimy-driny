@@ -1,0 +1,30 @@
+@import '../../../styles/settings.scss';
+
+.root {
+
+  > div {
+    display: flex;
+    align-items: center;
+     * {
+       margin: 10px;
+     }
+  }
+
+  i {
+    color: white;
+    font-size: 40px;
+  }
+
+  .amount {
+    background: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: $color-googlebtn;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 15px;
+  }
+}

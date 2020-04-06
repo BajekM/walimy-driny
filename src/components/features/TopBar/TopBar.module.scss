@@ -1,0 +1,46 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  padding: 0 $container-padding;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+
+  > div {
+    height: 100%;
+    width: 30%;
+  }
+
+  .logoWrappper {
+    width: 200px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .loginWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .basketWrapper {
+    display: flex;
+    width: 380px;
+    align-items: center;
+    position: relative;
+    background: $color-googlebtn;
+    border-radius: 10px;
+
+    > i {
+      color: white;
+      position: absolute;
+      right: 0;
+      margin-right: 10px;
+      font-size: 40px;
+    }
+  }
+}
