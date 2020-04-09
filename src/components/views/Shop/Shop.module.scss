@@ -1,0 +1,28 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  padding: 0 $container-padding;
+  color: $color-googlebtn;
+
+  .productItem {
+    height: 500px;
+    padding: 15px;
+
+    div {
+      border-radius: 30px;
+      border: 5px solid $color-googlebtn;
+      height: 100%;
+
+      img {
+        height: 50%;
+        width: 100%;
+        object-fit: cover;
+        margin: 10px auto;
+      }
+    }
+
+    h2 {
+      text-align: center;
+    }
+  }
+}

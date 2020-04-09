@@ -2,10 +2,15 @@
 
 .root {
   padding: 0 $container-padding;
-  height: 75px;
+  height: 90px;
   display: flex;
   justify-content: space-between;
-  margin: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  background: white;
 
   > div {
     height: 100%;

@@ -19,27 +19,19 @@ class Component extends React.Component {
   // }
 
   render() {
-    // const {} = this.props;
+    const {className} = this.props;
     // const {} = this.state;
 
     return (
-      ''
+      <div className={clsx(className, styles.root)}>
+        <h2>{{pascalCase name}}</h2>
+        {children}
+      </div>
     );
   }
 
 }
 
-// const Component = ({className, children}) => (
-//   <div className={clsx(className, styles.root)}>
-//     <h2>{{pascalCase name}}</h2>
-//     {children}
-//   </div>
-// );
-
-// Component.propTypes = {
-//   children: PropTypes.node,
-//   className: PropTypes.string,
-// };
 
 // const mapStateToProps = state => ({
 //   someProp: reduxSelector(state),

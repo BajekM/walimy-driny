@@ -19,7 +19,7 @@ const Component = ({className}) => (
       <NavLink
         key={item.id}
         exact to={item.path}
-        activeClassName="active">
+        activeClassName={styles.active}>
         <div>
           <Icon name={item.icon}/>
         </div>

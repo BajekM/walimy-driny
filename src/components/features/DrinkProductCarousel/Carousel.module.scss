@@ -1,0 +1,15 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  > div {
+    height: 400px;
+    width: 90%;
+    margin: auto;
+  }
+
+  img {
+    object-fit: cover;
+    height: 400px;
+    width: 100%
+  }
+}

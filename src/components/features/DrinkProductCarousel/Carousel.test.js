@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PostAddComponent } from './PostAdd';
+import { CarouselComponent } from './Carousel';
 
-describe('Component PostAdd', () => {
+describe('Component Carousel', () => {
   it('should render without crashing', () => {
-    const component = shallow(<PostAddComponent />);
+    const component = shallow(<CarouselComponent />);
     expect(component).toBeTruthy();
   });
 });

@@ -9,10 +9,12 @@ import { store } from './redux/store';
 
 import { MainLayout } from './components/layout/MainLayout/MainLayout';
 import { Homepage } from './components/views/Homepage/Homepage';
-import { Post } from './components/views/Post/Post';
-import { PostEdit } from './components/views/PostEdit/PostEdit';
-import { PostAdd } from './components/views/PostAdd/PostAdd';
+import { Drinks } from './components/views/Drinks/Drinks';
+import { Shop } from './components/views/Shop/Shop';
+import { Contact } from './components/views/Contact/Contact';
 import { NotFound } from './components/views/NotFound/NotFound';
+import { DrinkId } from './components/views/DrinkId/DrinkId';
+import { ProductId } from './components/views/ProductId/ProductId';
 
 const theme = createMuiTheme({
   palette: {
@@ -29,9 +31,11 @@ const App = () => (
           <MainLayout>
             <Switch>
               <Route exact path='/' component={Homepage} />
-              <Route exact path='/drinks' component={PostAdd} />
-              <Route exact path='/shop' component={Post} />
-              <Route exact path='/contact' component={PostEdit} />
+              <Route exact path='/drinks' component={Drinks} />
+              <Route exact path='/shop' component={Shop} />
+              <Route exact path='/contact' component={Contact} />
+              <Route exact path='/drink/:id' component={DrinkId} />
+              <Route exact path='/product/:id' component={ProductId} />
               <Route path='*' component={NotFound} />
             </Switch>
           </MainLayout>

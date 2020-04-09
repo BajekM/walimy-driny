@@ -2,4 +2,62 @@
 
 .root {
   padding: 0 $container-padding;
+
+  .carouselObject {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+
+    img {
+      position: absolute;
+      object-fit: cover;
+      z-index: 10;
+      height: 100%;
+      width: 100%;
+    }
+
+    div {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: black;
+      opacity: 0.4;
+      z-index: 20;
+    }
+
+    h2 {
+      width: 70%;
+      text-align: center;
+      margin: 0 auto;
+      z-index: 100;
+      color: white;
+      text-shadow: 2px 2px 2px black;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 50px;
+      font-weight: bolder;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 20px;
+      background: $color-red;
+      color: white;
+      font-weight: bold;
+      z-index: 100;
+      width: 100px;
+      margin: 10px;
+      transition: all 0.5s;
+
+    }
+
+    button:hover {
+      background: white;
+      color: $color-red;
+      transition: all 0.5s;
+    }
+  }
 }

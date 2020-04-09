@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../Carousel/Carousel.module.scss';
+import styles from './Carousel.module.scss';
 
 import clsx from 'clsx';
 import Slider from 'react-slick';
@@ -35,7 +35,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', background: '#c1282d' }}
+      style={{ ...style, display: 'block', background: '#DD4B39' }}
       onClick={onClick}
     />
   );
@@ -55,8 +55,6 @@ class SimpleSlider extends React.Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 5000,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
     };
