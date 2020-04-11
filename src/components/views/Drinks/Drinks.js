@@ -41,6 +41,10 @@ const Component = ({className, drinks, fetchPublishedDrinks}) => {
                   <li key={ingerdient.indexOf}>{ingerdient}</li>
                 )}
               </ul>
+              <div className={styles.tags}>
+                  Tags: {drink.tags.map(tag => tag + ' ')}
+              </div>
+              {/* Tags: {drink.tags.map(tag => tag)} */}
             </div>
           </Link>
         </div>

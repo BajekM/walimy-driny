@@ -45,6 +45,11 @@
   }
 }
 
+@media (max-width: 1200) {
+    .root {
+      margin-top: 160px;
+    }
+}
 
 @media (max-width: 1070px) {
   .root {

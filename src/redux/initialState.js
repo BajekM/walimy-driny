@@ -1,4 +1,11 @@
 export const initialState = {
+  user: {
+    data: '',
+    loading: {
+      active: false,
+      error: false,
+    },
+  },
   drinks: {
     data: [
       {
@@ -12,6 +19,7 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        tags: ['long', 'strong'],
       },
       {
         name: 'Mohito',
@@ -24,6 +32,7 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        tags: ['long', 'strong'],
       },
       {
         name: 'Mohito',
@@ -36,6 +45,7 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        tags: ['long', 'strong'],
       },
       {
         name: 'Mohito',
@@ -48,6 +58,7 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        tags: ['long', 'strong'],
       },
       {
         name: 'Mohito',
@@ -60,6 +71,7 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        tags: ['long', 'strong'],
       },
       {
         name: 'Mohitohgfhg',
@@ -72,6 +84,7 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        tags: ['long', 'strong'],
       },
       {
         name: 'Mohito',
@@ -84,6 +97,7 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        tags: ['long', 'strong'],
       },
     ],
     loading: {

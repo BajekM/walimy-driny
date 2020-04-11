@@ -32,6 +32,21 @@
     justify-content: center;
     align-items: center;
     width: 250px;
+
+    .logOut {
+      display: inline-block;
+      background: $color-main;
+      padding: 5px;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .logOut:hover {
+      background: yellow;
+      background: $color-googlebtn;
+        box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
+    }
   }
 
   .basketWrapper {
@@ -55,13 +70,17 @@
 
 @media (max-width: 1200px) {
   .root {
-    height: 200px;
+    height: 160px;
 
     .logoWrappper {
 
       img {
         width: auto;
       }
+    }
+
+    .basketWrapper {
+      height:  50px;
     }
 
     > div {
@@ -78,8 +97,16 @@
     display: block;
 
     > div {
-      height: 60px;
-      margin: 0 auto;
+      height: 40px;
+      margin: 10px auto;
+
+      i {
+        font-size: 20px;
+      }
+    }
+
+    .logoWrappper {
+      font-size: 10px;
     }
   }
 }

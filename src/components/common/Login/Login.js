@@ -10,16 +10,17 @@ import clsx from 'clsx';
 
 import styles from './Login.module.scss';
 
-const Component = ({className}) => (
+const Component = ({className, name}) => (
   <div className={clsx(className, styles.root)}>
     <Icon name='user' />
-    <span>Name</span>
+    <span>{name}</span>
   </div>
 );
 
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  name: PropTypes.string,
 };
 
 // const mapStateToProps = state => ({

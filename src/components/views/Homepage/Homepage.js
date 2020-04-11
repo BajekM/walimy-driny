@@ -25,7 +25,6 @@ const Component = ({className}) => (
           {item.id === 3 ? <button>Socials</button> : ''}
           {item.id === 2 ? <button>Sklep</button> : ''}
           {item.id === 1 ? <button>Drinki</button> : ''}
-
         </div>
       )}
     </SimpleSlider>

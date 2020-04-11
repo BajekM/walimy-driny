@@ -10,7 +10,7 @@ import styles from './GoogleButton.module.scss';
 
 const Component = ({className, children}) => (
   <div className={clsx(className, styles.root)}>
-    <a className={clsx(styles.loginBtn, styles.loginBtnGoogle)} href="https://google.com">
+    <a className={clsx(styles.loginBtn, styles.loginBtnGoogle)} href='/auth/google'>
     Login with Google
     </a>
   </div>
