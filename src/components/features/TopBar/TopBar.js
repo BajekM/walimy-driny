@@ -18,18 +18,19 @@ import styles from './TopBar.module.scss';
 
 
 
+
 console.log(logo);
 
 const Component = ({className}) => (
-  <div className={clsx(className, styles.root)}>
-    <div className={styles.logoWrappper}>
+  <div className={clsx(className, styles.root, 'justify-content-between py-2')}>
+    <div className={clsx(styles.logoWrappper, 'col-xl-2 col-sm-6 col-12')}>
       <img src={logo} alt="logo"></img>
     </div>
-    <div className={styles.loginWrapper}>
+    <div className={clsx(styles.loginWrapper, 'col-xl-4 col-sm-6 col-12')}>
       <GoogleButton />
-      <Login />
+      {/* <Login /> */}
     </div>
-    <div className={styles.basketWrapper}>
+    <div className={clsx(styles.basketWrapper, 'col-xl-6 col-sm-12')}>
       <Basket />
       <Icon name='angle-down'/>
     </div>

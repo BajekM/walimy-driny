@@ -2,16 +2,23 @@
 
 .root {
   padding: 0 $container-padding;
-  color: $color-googlebtn;
+  color: $color-main;
 
   .productItem {
     height: 500px;
     padding: 15px;
 
+    a {
+      color: $color-main;
+      text-decoration: none;
+    }
+
     div {
-      border-radius: 30px;
-      border: 5px solid $color-googlebtn;
+      border-radius: 10px;
+      border: 2px solid $color-main;
       height: 100%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      overflow: auto;
 
       img {
         height: 50%;
@@ -23,6 +30,11 @@
 
     h2 {
       text-align: center;
+    }
+
+    p {
+      padding: 5px 10px;
+      text-align: justify;
     }
   }
 }

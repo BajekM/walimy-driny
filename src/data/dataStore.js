@@ -14,7 +14,7 @@ export const settings =  {
     {
       id: 2,
       path: '/drinks',
-      icon: 'star',
+      icon: 'cocktail',
     },
 
     {
@@ -64,9 +64,9 @@ export const settings =  {
 
   contactData : {
     name: 'Walimy Driny',
-    street: 'Wesoła',
-    houseNumber: '3',
-    apartmentNumber: '4A',
+    street: 'Krakusa',
+    houseNumber: '16',
+    // apartmentNumber: '4A',
     postalCode: '37-481',
     city: 'Kraków',
     phone: '792567845',

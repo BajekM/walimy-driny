@@ -1,7 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .root {
-  background: $color-googlebtn;
+  background: $color-main;
   margin-top: 100px;
   padding: 0 $container-padding;
   color: white;
@@ -14,7 +14,8 @@
   ul {
     list-style: none;
 
-    a{
+
+    a {
       color: inherit;
       text-decoration: none;
       transition: all 0.5s;
@@ -32,11 +33,38 @@
       display: block;
       padding-left: 50px;
     }
+
+    .mail {
+      color: inherit;
+      text-decoration: none;
+      transition: none;
+      font-size: 15px;
+    }
+
+    .mail:hover {
+      transition: none;
+      font-size: 15px;
+    }
   }
 
   .copyrights {
     font-size: 13px;
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .root {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 350px) {
+  .root {
+
+    ul li {
+      padding-left: 15px;
+    }
   }
 }

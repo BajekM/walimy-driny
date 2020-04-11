@@ -14,18 +14,35 @@ const Component = ({className, match, drinks }) => {
   const drink = drinks.find(item => item.name === match.params.id);
   return (
     <div className={clsx(className, styles.root)}>
-      <h2>{match.params.id}</h2>
-      <div className='row'>
-        <div className='col-6 px-2 pb-4'>
-          <SimpleSlider>
+      <div className='row justify-content-center'>
+        <div className='col-md-12 col-lg-6 px-2 pb-4'>
+          <SimpleSlider className='px-3'>
             {drink.carousel.map(item =>
               <img src={item} key={item} alt='item'></img>
             )}
           </SimpleSlider>
         </div>
-        <div className='col-6 00'>
-          <div className={clsx('col-12', 'px-2', 'py-3', 'mb-4', styles.border)}>Skladniki</div>
-          <div className={clsx('col-12', 'px-2', 'py-3', styles.border)}>Wykonanie</div>
+        <div className={clsx('col-md-12 col-lg-6 pb-4 row justify-content-around align-items-center', styles.bordered)}>
+          <div className={clsx('col-12  col-sm-6 px-2 h-80', styles.wrapper)}>
+            <div className='px-2 py-3'>
+              <h3>Składniki</h3>
+              <ul>
+                {drink.ingredients.map(ingredient =>
+                  <li key={ingredient}>{ingredient}</li>
+                )}
+              </ul>
+            </div>
+          </div>
+          <div className={clsx('col-12  col-sm-6 px-2 h-80', styles.wrapper)}>
+            <div className='px-2 py-3'>
+              <h3>Wykonanie</h3>
+              <ol>
+                {drink.actions.map(action =>
+                  <li key={action}>{action}</li>
+                )}
+              </ol>
+            </div>
+          </div>
         </div>
       </div>
       <div className='my-5'>

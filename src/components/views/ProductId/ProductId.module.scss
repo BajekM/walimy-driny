@@ -2,9 +2,50 @@
 
 .root {
   padding: 0 $container-padding;
+  font-family: $drink-product-font;
+  font-size: 1.2rem;
+  color: $color-main;
+
+  > div {
+    overflow: auto;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  .paramsWrapper {
+
+    > div {
+      flex-direction: row;
+    }
+  }
+
+  button {
+    color: $color-main;
+  }
 
   .border {
     border-radius: 30px;
-    border: 5px solid $color-googlebtn;
+    border: 2px solid $color-main;
+
+    p {
+      text-align: justify;
+    }
+
+    .status {
+      display: inline-block;
+      margin-left: 40px;
+      font-weight: bolder;
+    }
+
+    .available {
+      color: green;
+    }
+
+    .nonAvailable {
+      color: red;
+    }
   }
 }

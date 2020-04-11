@@ -6,6 +6,7 @@
   background-attachment: fixed;
   background-position: center center;
   position: relative;
+  margin-top: 90px;
 
   div:first-of-type {
     position: absolute;
@@ -41,5 +42,46 @@
       font-size: 25px;
       font-weight: bolder;
     }
+  }
+}
+
+
+@media (max-width: 1070px) {
+  .root {
+    height: 450px;
+    .inner {
+      width: 60%;
+
+      blockquote {
+        font-size: 30px;
+      }
+
+      .author {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .root {
+    height: 300px;
+    .inner {
+      width: 70%;
+
+      blockquote {
+        font-size: 25px;
+      }
+
+      .author {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .root {
+    margin-top: 200px;
   }
 }

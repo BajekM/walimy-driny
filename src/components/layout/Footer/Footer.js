@@ -16,31 +16,34 @@ import styles from './Footer.module.scss';
 
 const Component = ({className}) => (
   <div className={clsx(className, styles.root, 'row')}>
-    <div className='col-3'>
+    <div className='col-md-6 col-12 col-lg-3'>
       <h3>{settings.contactData.name}</h3>
       <ul>
-        <li>{`${settings.contactData.street} ${settings.contactData.houseNumber}/${settings.contactData.apartmentNumber}`}</li>
+        {!settings.contactData.apartmentNumber ?
+          <li>{`${settings.contactData.street} ${settings.contactData.houseNumber}`}</li> :
+          <li>{`${settings.contactData.street} ${settings.contactData.houseNumber}/${settings.contactData.apartmentNumber}`}</li>
+        }
         <li>{`${settings.contactData.postalCode}, ${settings.contactData.city}`}</li>
         <li>{`phone: ${settings.contactData.phone}`}</li>
-        <li>{`email: ${settings.contactData.email}`}</li>
+        <li>email: <a href={`mailto:${settings.contactData.email}`} className={styles.mail}>{settings.contactData.email}</a></li>
       </ul>
     </div>
-    <div className='col-3'>
+    <div className='col-md-6 col-12 col-lg-3'>
       <h3>Bądź na bieżąco :)</h3>
       <h3 className='mb-5'>Znajdziesz nas tu:</h3>
       <Socials />
     </div>
-    <div className='col-3'>
+    <div className='col-md-6 col-12 col-lg-3'>
       <h3>Polecane:</h3>
-      <ul>
+      <ul className={styles.recommended}>
         {settings.recommended.map(item =>
-          <a key={item.id} href={item.href}><li>{item.name}</li></a>
+          <a key={item.id} className={styles.recommended} href={item.href}><li>{item.name}</li></a>
         )}
       </ul>
     </div>
-    <div className='col-3'>
+    <div className=' col-md-6 col-12 col-lg-3'>
       <h3>Parę słów ode mnie...</h3>
-      <p>pizdu pizdu</p>
+      <p>Lorem...</p>
     </div>
     <div className={clsx('col-12', styles.copyrights)}>&copy; Copyright 2020 by Walimy Driny. All rights reserved.</div>
   </div>

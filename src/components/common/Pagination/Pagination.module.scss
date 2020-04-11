@@ -1,0 +1,57 @@
+@import '../../../styles/settings.scss';
+
+.root {
+
+  width: 100%;
+  margin: 20px auto;
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .active {
+    background: $color-green;
+  }
+
+  .disabled {
+    opacity: 50%;
+    display: inline;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 10px auto;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      margin: 10px;
+      color: white;
+      background: $color-googlebtn;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      position: relative;
+
+
+      * {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+
+      a {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+  }
+}

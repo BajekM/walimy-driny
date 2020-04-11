@@ -7,14 +7,22 @@
     height: 50px;
     border-radius: 50%;
     background: white;
-    color: $color-googlebtn;
+    color: $color-main;
     font-size: 20px;
     transition: all 0.5s;
   }
 
   .social:hover {
-    color: $color-googlebtn;
+    color: $color-main;
     transform: scale(1.5);
     transition: all 0.5s;
+  }
+}
+
+@media (max-width: 600px) {
+  .social {
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
   }
 }

@@ -2,15 +2,14 @@
 
 .root {
   padding: 0 $container-padding;
-  height: 90px;
   display: flex;
-  justify-content: space-between;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  flex-wrap: wrap;
+  height: 90px;
   z-index: 1000;
   position: fixed;
   width: 100%;
   background: white;
+  margin-top: -90px;
 
   > div {
     height: 100%;
@@ -19,6 +18,8 @@
 
   .logoWrappper {
     width: 200px;
+    text-align: center;
+
     img {
       height: 100%;
       width: 100%;
@@ -30,15 +31,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 250px;
   }
 
   .basketWrapper {
     display: flex;
-    width: 380px;
     align-items: center;
     position: relative;
-    background: $color-googlebtn;
+    background: $color-main;
     border-radius: 10px;
+    width: 100%;
 
     > i {
       color: white;
@@ -46,6 +48,38 @@
       right: 0;
       margin-right: 10px;
       font-size: 40px;
+    }
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .root {
+    height: 200px;
+
+    .logoWrappper {
+
+      img {
+        width: auto;
+      }
+    }
+
+    > div {
+      height: 90px;
+    }
+  }
+}
+
+
+@media (max-width: 576px) {
+  .root {
+    height: 200px;
+    margin-top: -200px;
+    display: block;
+
+    > div {
+      height: 60px;
+      margin: 0 auto;
     }
   }
 }

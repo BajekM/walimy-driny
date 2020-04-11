@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { settings } from '../../../data/dataStore';
 
 import { Icon } from '../../common/Icon/Icon';
+import { FaCocktail } from 'react-icons/fa';
 
 import clsx from 'clsx';
 
@@ -14,14 +15,15 @@ import clsx from 'clsx';
 import styles from './Navigation.module.scss';
 
 const Component = ({className}) => (
-  <div className={clsx(className, styles.root)}>
+  <div className={clsx(className, styles.root)} id='nav'>
     {settings.nav.map(item =>
       <NavLink
         key={item.id}
         exact to={item.path}
         activeClassName={styles.active}>
         <div>
-          <Icon name={item.icon}/>
+          {item.icon === 'cocktail' ? <FaCocktail /> : <Icon name={item.icon}/>}
+          {/* <Icon name={item.icon}/> */}
         </div>
       </NavLink>
     )}
