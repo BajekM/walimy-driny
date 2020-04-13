@@ -19,7 +19,7 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
-        tags: ['long', 'strong'],
+        tags: ['long', 'strong', 'shot'],
       },
       {
         name: 'Mohito',
@@ -45,7 +45,7 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
-        tags: ['long', 'strong'],
+        tags: ['long', 'strong', 'sweet', 'shot'],
       },
       {
         name: 'Mohito',
@@ -129,6 +129,8 @@ export const initialState = {
             options: ['blue', 'white', 'black', 'red'],
           },
         ],
+        price: 30,
+        category: 'sprzęt barmański',
       },
       {
         name: 'Shaksader',
@@ -139,6 +141,8 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        price: 40,
+        category: 'akcesoria',
       },
       {
         name: 'Shaker',
@@ -149,6 +153,8 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        price: 50,
+        category: 'akcesoria',
       },
       {
         name: 'Shaker',
@@ -159,6 +165,8 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        price: 60,
+        category: 'sprzęt barmański',
       },
       {
         name: 'Shaker',
@@ -169,6 +177,8 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        price: 30,
+        category: 'akcesoria',
       },
       {
         name: 'Shaksdser',
@@ -179,6 +189,8 @@ export const initialState = {
           'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
+        price: 20,
+        category: 'książki',
       },
     ],
     loading: {

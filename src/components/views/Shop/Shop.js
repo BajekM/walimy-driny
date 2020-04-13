@@ -8,17 +8,37 @@ import { connect } from 'react-redux';
 import { getAll, fetchAllProducts } from '../../../redux/productsRedux';
 
 import { Pagination } from '../../common/Pagination/Pagination';
+import { settings } from '../../../data/dataStore';
+
+import TextField from '@material-ui/core/TextField';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 import styles from './Shop.module.scss';
 
 const Component = ({className, products, fetchProducts}) => {
+
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(3);
+  const [productsPerPage] = useState(2);
+  const [category, setCategory] = useState('');
+  const [startPrice, setStartPrice] = useState(1);
+  const [endPrice, setEndPrice] = useState(1000);
+
+  const filterProducts = (items) => {
+    if (category)
+      return  items.filter(item => item.price >= startPrice && item.price <= endPrice && item.category === category);
+    else
+      return items.filter(item => item.price >= startPrice && item.price <= endPrice);
+  };
 
   // Get current products
   const indexOfLastPost = currentPage * productsPerPage;
   const indexOfFirstPost = indexOfLastPost - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstPost, indexOfLastPost);
+  const currentProducts = filterProducts(products).slice(indexOfFirstPost, indexOfLastPost);
 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -28,6 +48,54 @@ const Component = ({className, products, fetchProducts}) => {
   fetchProducts();
   return (
     <div className={clsx(className, styles.root, 'row')}>
+      <div className='col-12'>
+        <FormControl component="fieldset">
+          <FormLabel  component="legend">Kategoria</FormLabel>
+          <RadioGroup className='flex-row' aria-label="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
+            {settings.productCategories.map(productCategory =>
+              <FormControlLabel key={productCategory} className='d-flex mx-3' value={productCategory} control={<Radio color='primary' />} label={productCategory} />
+            )}
+          </RadioGroup>
+        </FormControl>
+      </div>
+      <div className='col-12 my-3 position-relative'>
+        <TextField
+          id='table'
+          label='Cena od'
+          type='number'
+          className='mx-5'
+          value={startPrice}
+          onChange={(e) => setStartPrice(e.target.value)}
+          defaultValue= {1}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          inputProps={{
+            step: 1,
+            min: 1,
+            max: 99,
+          }}
+        />
+        <span className={styles.currencyFrom}>zł</span>
+        <TextField
+          id='table'
+          label='Cena do'
+          type='number'
+          className='mx-5'
+          value={endPrice}
+          onChange={(e) => setEndPrice(e.target.value)}
+          defaultValue= {1}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          inputProps={{
+            step: 10,
+            min: 1,
+            max: 1000,
+          }}
+        />
+        <span className={styles.currencyTo}>zł</span>
+      </div>
       {currentProducts.map(product =>
         <div key={product.name} className={clsx(styles.productItem, 'col-12 col-sm-6 col-md-4 col-lg-3')}>
           <Link exact to={`/product/${product.name}`}>
@@ -41,7 +109,7 @@ const Component = ({className, products, fetchProducts}) => {
       )}
       <Pagination
         itemsPerPage={productsPerPage}
-        totalItems={products.length}
+        totalItems={filterProducts(products).length}
         paginate={paginate}
         paginateNext={paginateNext}
         paginatePrevious={paginatePrevious}
@@ -74,3 +142,5 @@ export {
   Container as Shop,
   Component as ShopComponent,
 };
+
+

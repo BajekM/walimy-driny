@@ -117,4 +117,8 @@ export const settings =  {
       icon: 'snapchat-ghost',
     },
   ],
+
+  tags: ['strong', 'shot', 'long', 'short', 'tropical', 'sweet'],
+
+  productCategories: ['sprzęt barmański', 'akcesoria', 'książki'],
 };

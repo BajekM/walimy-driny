@@ -38,7 +38,7 @@ const Component = ({className, match, products }) => {
             )}
           </SimpleSlider>
         </div>
-        <div className={clsx('col-12 col-md-6 d-flex flex-column justify-content-between', styles.border)}>
+        <div className={clsx('col-12 col-md-6 d-flex flex-column justify-content-between py-3', styles.border)}>
           <div className='px-2 py-3 h-50 d-flex flex-column justify-content-around'>
             <div>
             Status:
@@ -47,9 +47,9 @@ const Component = ({className, match, products }) => {
                 <span className={clsx(styles.status, styles.nonAvailable)}>Produkt niedostępny</span>
               }
             </div>
-            <div className='mt-3 d-flex'>
+            <div className='mt-3 d-flex align-items-center'>
               <TextField
-                id='table'
+                id='amount'
                 label='Ilość'
                 type='number'
                 defaultValue= {1}
@@ -69,7 +69,7 @@ const Component = ({className, match, products }) => {
                       <FormLabel  component="legend">{param.name}</FormLabel>
                       <RadioGroup aria-label={param.name} name={param.name} value={value} onChange={handleChange}>
                         {param.options.map(option =>
-                          <FormControlLabel key={option} className='d-flex' value={option} control={<Radio />} label={option} />
+                          <FormControlLabel key={option} className='d-flex' value={option} control={<Radio />} color='primary' label={option} />
                         )}
                       </RadioGroup>
                     </div>
@@ -77,8 +77,8 @@ const Component = ({className, match, products }) => {
                 </FormControl> : ''
               }
               {product.status !== 'available' ?
-                <button className='ml-5' disabled><Icon name ='shopping-cart'/><span className='m-4'>Dodaj do koszyka</span></button> :
-                <button className='ml-5'><Icon name ='shopping-cart'/><span className='m-4'>Dodaj do koszyka</span></button>
+                <button className='ml-3  justify-content-around' disabled><Icon name ='shopping-cart'/><span className='ml-3'>Dodaj do koszyka</span></button> :
+                <button className='ml-3  justify-content-around'><Icon name ='shopping-cart'/><span className='ml-3'>Dodaj do koszyka</span></button>
               }
             </div>
           </div>
