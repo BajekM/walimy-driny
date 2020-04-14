@@ -45,7 +45,7 @@
     "cors": "^2.8.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
-    "express-session": "1.17.0",
+    "express-session": "^1.17.0",
     "font-awesome": "^4.7.0",
     "icons": "^1.0.0",
     "mongoose": "^5.9.7",

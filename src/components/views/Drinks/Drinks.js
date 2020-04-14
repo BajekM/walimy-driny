@@ -119,7 +119,7 @@ const Component = ({className, drinks, fetchPublishedDrinks}) => {
       )}
       <Pagination
         itemsPerPage={drinksPerPage}
-        totalItems={drinks.length}
+        totalItems={filteredDrinks.length}
         paginate={paginate}
         paginateNext={paginateNext}
         paginatePrevious={paginatePrevious}

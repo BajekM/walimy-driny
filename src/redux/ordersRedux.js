@@ -1,7 +1,8 @@
 import Axios from 'axios';
 
 /* selectors */
-export const getAllPublished = ({orders}) => orders.data;
+export const getOrders = ({orders}) => orders.data;
+export const getBasket = ({orders}) => orders.data.find(order => order.status === 'basket');
 
 /* action name creator */
 const reducerName = 'orders';
@@ -11,11 +12,13 @@ const createActionName = name => `app/${reducerName}/${name}`;
 const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
+const CHANGE_AMOUNT = createActionName('CHANGE_AMOUNT');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
+export const changeAmount = payload => ({ payload, type: CHANGE_AMOUNT });
 
 /* thunk creators */
 export const fetchPublished = () => {
@@ -67,6 +70,14 @@ export const reducer = (statePart = [], action = {}) => {
           active: false,
           error: action.payload,
         },
+      };
+    }
+    case CHANGE_AMOUNT: {
+      return {
+        ...statePart,
+        data: statePart.data.map(order => (order.status !== 'basket') ? order :
+          {...order, products: order.products.map(product => (product.id !== action.payload.id) ? product :
+            {...product, amount: action.payload.amount})}),
       };
     }
     default:

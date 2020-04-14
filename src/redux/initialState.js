@@ -109,7 +109,7 @@ export const initialState = {
   products: {
     data: [
       {
-        name: 'Shaker',
+        name: 'Shakerdsfdsf',
         image: 'https://images.pexels.com/photos/3073970/pexels-photo-3073970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut accumsan tempor elit in mattis. Morbi mattis quam purus, non commodo enim scelerisque nec. Sed viverra felis fermentum lobortis ornare. Nulla facilisi. Etiam porttitor tortor at augue rhoncus placerat. Phasellus libero erat, luctus volutpat velit sed, cursus sodales est. Donec consectetur.',
         carousel: [
@@ -130,10 +130,10 @@ export const initialState = {
           },
         ],
         price: 30,
-        category: 'sprzęt barmański',
+        category: 'sprzęt',
       },
       {
-        name: 'Shaksader',
+        name: 'Shaksadeasdsadsar',
         image: 'https://images.pexels.com/photos/3073970/pexels-photo-3073970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         description: 'BLAdj hdjhfdskjhfdkjshfdkjshfjk dsfdsfdsdf dsfdsf',
         carousel: [
@@ -145,7 +145,7 @@ export const initialState = {
         category: 'akcesoria',
       },
       {
-        name: 'Shaker',
+        name: 'Shakesaffsar',
         image: 'https://images.pexels.com/photos/3073970/pexels-photo-3073970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         description: 'BLAdj hdjhfdskjhfdkjshfdkjshfjk dsfdsfdsdf dsfdsf',
         carousel: [
@@ -155,9 +155,10 @@ export const initialState = {
         ],
         price: 50,
         category: 'akcesoria',
+        amount: 2,
       },
       {
-        name: 'Shaker',
+        name: 'Shakerdsasadsa',
         image: 'https://images.pexels.com/photos/3073970/pexels-photo-3073970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         description: 'BLAdj hdjhfdskjhfdkjshfdkjshfjk dsfdsfdsdf dsfdsf',
         carousel: [
@@ -166,10 +167,10 @@ export const initialState = {
           'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         ],
         price: 60,
-        category: 'sprzęt barmański',
+        category: 'sprzęt',
       },
       {
-        name: 'Shaker',
+        name: 'Shakersadsad',
         image: 'https://images.pexels.com/photos/3073970/pexels-photo-3073970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         description: 'BLAdj hdjhfdskjhfdkjshfdkjshfjk dsfdsfdsdf dsfdsf',
         carousel: [
@@ -181,7 +182,7 @@ export const initialState = {
         category: 'akcesoria',
       },
       {
-        name: 'Shaksdser',
+        name: 'Shaksdssadasder',
         image: 'https://images.pexels.com/photos/3073970/pexels-photo-3073970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         description: 'BLAdj hdjhfdskjhfdkjshfdkjshfjk dsfdsfdsdf dsfdsf',
         carousel: [
@@ -200,10 +201,44 @@ export const initialState = {
   },
 
   orders: {
-    data: [],
+    data: [
+      {
+        products: [
+          {
+            id: 1,
+            name: 'Shakesaffsar',
+            image: 'https://images.pexels.com/photos/3073970/pexels-photo-3073970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            description: 'BLAdj hdjhfdskjhfdkjshfdkjshfjk dsfdsfdsdf dsfdsf',
+            carousel: [
+              'https://images.pexels.com/photos/3695801/pexels-photo-3695801.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+              'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+              'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            ],
+            price: 50,
+            category: 'akcesoria',
+            amount: 2,
+          },
+          {
+            name: 'Shakesaffsar',
+            image: 'https://images.pexels.com/photos/3073970/pexels-photo-3073970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            description: 'BLAdj hdjhfdskjhfdkjshfdkjshfjk dsfdsfdsdf dsfdsf',
+            carousel: [
+              'https://images.pexels.com/photos/3695801/pexels-photo-3695801.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+              'https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+              'https://images.pexels.com/photos/3467149/pexels-photo-3467149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            ],
+            price: 50,
+            category: 'akcesoria',
+            amount: 2,
+          },
+        ],
+        status: 'basket',
+      },
+    ],
     loading: {
       active: false,
       error: false,
     },
   },
+
 };

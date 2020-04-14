@@ -13,7 +13,7 @@
 
   > div {
     height: 100%;
-    width: 30%;
+    // width: 30%;
   }
 
   .logoWrappper {
@@ -50,19 +50,52 @@
   }
 
   .basketWrapper {
-    display: flex;
-    align-items: center;
-    position: relative;
     background: $color-main;
     border-radius: 10px;
     width: 100%;
 
-    > i {
+     .basketControls {
       color: white;
       position: absolute;
       right: 0;
       margin-right: 10px;
       font-size: 40px;
+      cursor: pointer;
+    }
+
+    .basketProduct {
+      font-size: 15px;
+      color: $color-main;
+      background: white;
+      word-break: break-all;
+
+    }
+
+    button {
+      background: $color-main;
+      color: white;
+      font-size: 20px;
+      transition: all 0.5s;
+    }
+
+    button:hover {
+      background: $color-red;
+      transition: all 0.5s;
+    }
+  }
+
+  .basket {
+    top: 100%;
+    left: 0;
+    min-height: 300px;
+    background: beige;
+    border-radius: 10px;
+    font-size: 25px;
+    color: $color-main;
+
+    .total {
+      color: $color-red;
+      border-top: 2px solid $color-red;
     }
   }
 }
@@ -99,10 +132,6 @@
     > div {
       height: 40px;
       margin: 10px auto;
-
-      i {
-        font-size: 20px;
-      }
     }
 
     .logoWrappper {

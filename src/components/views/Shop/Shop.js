@@ -29,10 +29,22 @@ const Component = ({className, products, fetchProducts}) => {
   const [endPrice, setEndPrice] = useState(1000);
 
   const filterProducts = (items) => {
-    if (category)
-      return  items.filter(item => item.price >= startPrice && item.price <= endPrice && item.category === category);
-    else
-      return items.filter(item => item.price >= startPrice && item.price <= endPrice);
+    const filtered = [];
+    if (category) {
+      for (let item of items) {
+        if (item.price >= startPrice && item.price <= endPrice && item.category === category) {
+          filtered.push(item);
+        }
+      }
+    }
+    else{
+      for (let item of items) {
+        if (item.price >= startPrice && item.price <= endPrice) {
+          filtered.push(item);
+        }
+      }
+    }
+    return filtered;
   };
 
   // Get current products
@@ -142,5 +154,3 @@ export {
   Container as Shop,
   Component as ShopComponent,
 };
-
-

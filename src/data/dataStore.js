@@ -120,5 +120,5 @@ export const settings =  {
 
   tags: ['strong', 'shot', 'long', 'short', 'tropical', 'sweet'],
 
-  productCategories: ['sprzęt barmański', 'akcesoria', 'książki'],
+  productCategories: ['sprzęt', 'akcesoria', 'książki'],
 };

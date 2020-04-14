@@ -10,18 +10,18 @@ import clsx from 'clsx';
 
 import styles from './Basket.module.scss';
 
-const Component = ({className}) => (
+const Component = ({className, amount}) => (
   <div className={clsx(className, styles.root)}>
     <div>
       <Icon name='shopping-cart' />
-      <div className={styles.amount}><span>0</span></div>
+      <div className={styles.amount}><span>{amount}</span></div>
     </div>
   </div>
 );
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
+  amount: PropTypes.number,
 };
 
 // const mapStateToProps = state => ({
