@@ -11,7 +11,7 @@ import { getAll } from '../../../redux/drinksRedux';
 import styles from './DrinkId.module.scss';
 
 const Component = ({className, match, drinks }) => {
-  const drink = drinks.find(item => item.name === match.params.id);
+  const drink = drinks.find(item => item._id === match.params.id);
   return (
     <div className={clsx(className, styles.root)}>
       <div className='row justify-content-center'>

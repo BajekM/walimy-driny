@@ -2,6 +2,7 @@ import Axios from 'axios';
 
 /* selectors */
 export const getAll = ({drinks}) => drinks.data;
+export const getLoadingState = ({drinks}) => drinks.loading;
 
 /* action name creator */
 const reducerName = 'drinks';

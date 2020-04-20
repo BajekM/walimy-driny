@@ -43,7 +43,7 @@ const Component = ({className}) => (
     </div>
     <div className=' col-md-6 col-12 col-lg-3'>
       <h3>Parę słów ode mnie...</h3>
-      <p>Lorem...</p>
+      <p>{settings.footerMyWords}</p>
     </div>
     <div className={clsx('col-12', styles.copyrights)}>&copy; Copyright 2020 by Walimy Driny. All rights reserved.</div>
   </div>

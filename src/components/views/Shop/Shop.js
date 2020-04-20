@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getAll, fetchAllProducts } from '../../../redux/productsRedux';
+import { getAll, fetchAllProducts, getLoadingState } from '../../../redux/productsRedux';
 
 import { Pagination } from '../../common/Pagination/Pagination';
 import { settings } from '../../../data/dataStore';
 
+import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -19,11 +20,11 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 import styles from './Shop.module.scss';
 
-const Component = ({className, products, fetchProducts}) => {
+const Component = ({className, products, fetchProducts, loading}) => {
 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(2);
+  const [productsPerPage] = useState(12);
   const [category, setCategory] = useState('');
   const [startPrice, setStartPrice] = useState(1);
   const [endPrice, setEndPrice] = useState(1000);
@@ -58,77 +59,93 @@ const Component = ({className, products, fetchProducts}) => {
   const paginatePrevious = () => setCurrentPage(currentPage - 1);
 
   fetchProducts();
-  return (
-    <div className={clsx(className, styles.root, 'row')}>
-      <div className='col-12'>
-        <FormControl component="fieldset">
-          <FormLabel  component="legend">Kategoria</FormLabel>
-          <RadioGroup className='flex-row' aria-label="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-            {settings.productCategories.map(productCategory =>
-              <FormControlLabel key={productCategory} className='d-flex mx-3' value={productCategory} control={<Radio color='primary' />} label={productCategory} />
-            )}
-          </RadioGroup>
-        </FormControl>
-      </div>
-      <div className='col-12 my-3 position-relative'>
-        <TextField
-          id='table'
-          label='Cena od'
-          type='number'
-          className='mx-5'
-          value={startPrice}
-          onChange={(e) => setStartPrice(e.target.value)}
-          defaultValue= {1}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          inputProps={{
-            step: 1,
-            min: 1,
-            max: 99,
-          }}
-        />
-        <span className={styles.currencyFrom}>zł</span>
-        <TextField
-          id='table'
-          label='Cena do'
-          type='number'
-          className='mx-5'
-          value={endPrice}
-          onChange={(e) => setEndPrice(e.target.value)}
-          defaultValue= {1}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          inputProps={{
-            step: 10,
-            min: 1,
-            max: 1000,
-          }}
-        />
-        <span className={styles.currencyTo}>zł</span>
-      </div>
-      {currentProducts.map(product =>
-        <div key={product.name} className={clsx(styles.productItem, 'col-12 col-sm-6 col-md-4 col-lg-3')}>
-          <Link exact to={`/product/${product.name}`}>
-            <div>
-              <h2>{product.name}</h2>
-              <img src={product.image} alt='product'></img>
-              <p>{product.description}</p>
-            </div>
-          </Link>
+  if(loading.active || !products.length){
+    return (
+      <Paper className={styles.component}>
+        <p>Loading...</p>
+      </Paper>
+    );
+  } else if(loading.error) {
+    return (
+      <Paper className={styles.component}>
+        <p>Error! Details:</p>
+        <pre>{loading.error}</pre>
+      </Paper>
+    );
+  } else {
+    return (
+      <div className={clsx(className, styles.root, 'row')}>
+        <div className='col-12'>
+          <FormControl component="fieldset">
+            <FormLabel  component="legend">Kategoria</FormLabel>
+            <RadioGroup className='flex-row' aria-label="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
+              {settings.productCategories.map(productCategory =>
+                <FormControlLabel key={productCategory} className='d-flex mx-3' value={productCategory} control={<Radio color='primary' />} label={productCategory} />
+              )}
+            </RadioGroup>
+          </FormControl>
         </div>
-      )}
-      <Pagination
-        itemsPerPage={productsPerPage}
-        totalItems={filterProducts(products).length}
-        paginate={paginate}
-        paginateNext={paginateNext}
-        paginatePrevious={paginatePrevious}
-        currentPage={currentPage}
-      />
-    </div>
-  );
+        <div className='col-12 my-3 position-relative'>
+          <TextField
+            id='table'
+            label='Cena od'
+            type='number'
+            className='mx-5'
+            value={startPrice}
+            onChange={(e) => setStartPrice(e.target.value)}
+            defaultValue= {1}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            inputProps={{
+              step: 1,
+              min: 1,
+              max: 99,
+            }}
+          />
+          <span className={styles.currencyFrom}>zł</span>
+          <TextField
+            id='table'
+            label='Cena do'
+            type='number'
+            className='mx-5'
+            value={endPrice}
+            onChange={(e) => setEndPrice(e.target.value)}
+            defaultValue= {1}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            inputProps={{
+              step: 10,
+              min: 1,
+              max: 1000,
+            }}
+          />
+          <span className={styles.currencyTo}>zł</span>
+        </div>
+        {currentProducts.map(product =>
+          <div key={product.name} className={clsx(styles.productItem, 'col-12 col-sm-6 col-md-4 col-lg-3')}>
+            <Link exact to={`/product/${product._id}`}>
+              <div>
+                <h2>{product.name}</h2>
+                <img src={product.image} alt='product'></img>
+                <p>{product.description}</p>
+                <span>Cena: {product.price} zł</span>
+              </div>
+            </Link>
+          </div>
+        )}
+        <Pagination
+          itemsPerPage={productsPerPage}
+          totalItems={filterProducts(products).length}
+          paginate={paginate}
+          paginateNext={paginateNext}
+          paginatePrevious={paginatePrevious}
+          currentPage={currentPage}
+        />
+      </div>
+    );
+  }
 };
 
 Component.propTypes = {
@@ -136,10 +153,12 @@ Component.propTypes = {
   className: PropTypes.string,
   products: PropTypes.array,
   fetchProducts: PropTypes.func,
+  loading: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
   products: getAll(state),
+  loading: getLoadingState(state),
 });
 
 const mapDispatchToProps = dispatch => ({

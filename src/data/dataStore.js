@@ -4,6 +4,8 @@ export const settings =  {
     author: 'Emily Beckett',
   },
 
+  logo: '/images/logo.png',
+
   nav : [
     {
       id: 1,
@@ -90,6 +92,11 @@ export const settings =  {
       name: 'tipsybartender.com',
       href: 'https://tipsybartender.com/',
     },
+    {
+      id: 4,
+      name: 'makemeacocktail.com',
+      href: 'https://makemeacocktail.com/mybar/',
+    },
   ],
 
   socials : [
@@ -121,4 +128,6 @@ export const settings =  {
   tags: ['strong', 'shot', 'long', 'short', 'tropical', 'sweet'],
 
   productCategories: ['sprzęt', 'akcesoria', 'książki'],
+
+  foterMyWords: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis sem nisl. Ut pharetra venenatis ultrices. Proin dictum sit amet lectus id vestibulum. Etiam sit amet ultrices ante. Fusce finibus velit ac risus lacinia congue. Proin tellus nibh, tincidunt quis felis a, semper interdum felis. Ut finibus vitae nibh a.',
 };

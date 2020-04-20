@@ -23,7 +23,7 @@ export const logOut = payload => ({ payload, type: LOG_OUT });
 export const fetchUser = () => {
   return (dispatch, getState) => {
     const state = getState();
-    if (!state.user.data) {
+    if (!state.user.loading.active && !state.user.data) {
       dispatch(fetchStarted());
 
       Axios

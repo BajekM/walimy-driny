@@ -3,13 +3,14 @@
 .root {
   padding: 0 $container-padding;
   font-family: $drink-product-font;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: $color-main;
 
   .bordered {
     border-radius: 30px;
     border: 2px solid $color-main;
     overflow: auto;
+    font-size: 17px;
 
     .wrapper {
       height: 85%;
