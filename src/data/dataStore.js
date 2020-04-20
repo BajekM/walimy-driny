@@ -129,5 +129,5 @@ export const settings =  {
 
   productCategories: ['sprzęt', 'akcesoria', 'książki'],
 
-  foterMyWords: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis sem nisl. Ut pharetra venenatis ultrices. Proin dictum sit amet lectus id vestibulum. Etiam sit amet ultrices ante. Fusce finibus velit ac risus lacinia congue. Proin tellus nibh, tincidunt quis felis a, semper interdum felis. Ut finibus vitae nibh a.',
+  footerMyWords: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis sem nisl. Ut pharetra venenatis ultrices. Proin dictum sit amet lectus id vestibulum. Etiam sit amet ultrices ante. Fusce finibus velit ac risus lacinia congue. Proin tellus nibh, tincidunt quis felis a, semper interdum felis. Ut finibus vitae nibh a.',
 };

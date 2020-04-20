@@ -81,6 +81,7 @@ export const addProdToBasket = (obj, id) => {
   return (dispatch, getState) => {
     const state = getState();
 
+
     if (!state.orders.basket.products) {
 
       dispatch(addToBasket(obj));
@@ -100,7 +101,7 @@ export const addProdToBasket = (obj, id) => {
       dispatch(addToBasket(obj));
 
       Axios
-        .put('http://localhost:8000/api/orders/basket', {products: obj})
+        .put('http://localhost:8000/api/orders/basket', { products: obj })
         .then(res => {
           dispatch(setBasket(res.data));
         })

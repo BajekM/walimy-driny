@@ -80,10 +80,9 @@ const Component = ({className, match, products, addToBasket, basket, increase, h
               {product.status !== 'available' ?
                 <button className='ml-3  justify-content-around' disabled><Icon name ='shopping-cart'/><span className={clsx('ml-3', styles.disabledButton)}>Dodaj do koszyka</span></button> :
                 <button className='ml-3  justify-content-around' onClick={
-
-                  (!basket.products || !basket.products.find(item => item._id === product._id) ) ?
+                  (!basket.products || !basket.products.find(item => item._id === product._id) || product.params.length !== 0) ?
                     (!basket.products ? () => addToBasket([{...product, amount: amount}], uuidv4()) :
-                      addToBasket([basket.products.map(item => item), {...product, amount: amount}], uuidv4())) :
+                      () => addToBasket([...basket.products, {...product, amount: amount}], uuidv4())) :
                     (() => increase(
                       basket.products.map(item =>
                         item._id !== product._id ?
