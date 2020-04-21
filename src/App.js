@@ -15,6 +15,7 @@ import { Contact } from './components/views/Contact/Contact';
 import { NotFound } from './components/views/NotFound/NotFound';
 import { DrinkId } from './components/views/DrinkId/DrinkId';
 import { ProductId } from './components/views/ProductId/ProductId';
+import { Formula } from './components/views/Formula/Formula';
 
 const theme = createMuiTheme({
   palette: {
@@ -37,6 +38,7 @@ const App = () => (
               <Route exact path='/contact' component={Contact} />
               <Route exact path='/drink/:id' component={DrinkId} />
               <Route exact path='/product/:id' component={ProductId} />
+              <Route exact path='/formula/:id' component={Formula} />
               <Route path='*' component={NotFound} />
             </Switch>
           </MainLayout>

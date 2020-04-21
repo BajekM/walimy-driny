@@ -68,7 +68,7 @@ const Component = ({className, match, products, addToBasket, basket, increase, h
                   {product.params.map(param =>
                     <div key={param.name} className={clsx(styles.paramsWrapper, 'ml-5')}>
                       <FormLabel  component="legend">{param.name}</FormLabel>
-                      <RadioGroup aria-label={param.name} name={param.name}  defaultValue={param.options[0]} value={param.option} onChange={e => handleChange({productId: product._id, name: param.name, value: e.target.value})}>
+                      <RadioGroup aria-label={param.name} name={param.name}  value={param.option} onChange={e => handleChange({productId: product._id, name: param.name, value: e.target.value})}>
                         {param.options.map(option =>
                           <FormControlLabel key={option} className='d-flex' value={option} control={<Radio />} label={option} />
                         )}

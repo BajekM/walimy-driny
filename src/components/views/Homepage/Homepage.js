@@ -22,11 +22,11 @@ const Component = ({className}) => {
             <img src={item.image} alt='bar'></img>
             <div></div>
             <h2>{item.text}</h2>
-            {item.id === 5 ? <button>Quiz</button> : ''}
-            {item.id === 4 ? <button>Email</button> : ''}
-            {item.id === 3 ? <button>Socials</button> : ''}
-            {item.id === 2 ? <button>Sklep</button> : ''}
-            {item.id === 1 ? <button>Drinki</button> : ''}
+            {/* {item.id === 5 ? <button>Quiz</button> : ''} */}
+            {item.id === 4 ? <a href='mailto:walimydriny@example.com'><button>Email</button></a> : ''}
+
+            {item.id === 2 ? <a href='shop'><button>Sklep</button></a> : ''}
+            {item.id === 1 ? <a href='drinks'><button>Drinki</button></a> : ''}
           </div>
         )}
       </SimpleSlider>

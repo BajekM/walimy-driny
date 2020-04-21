@@ -59,6 +59,10 @@
       color: $color-red;
       transition: all 0.5s;
     }
+
+    a {
+      z-index: 100000;
+    }
   }
 }
 

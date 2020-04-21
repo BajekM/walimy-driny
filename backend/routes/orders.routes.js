@@ -16,12 +16,11 @@ router.get('/orders', async (req, res) => {
 });
 
 router.get('/orders/basket', async (req, res) => {
-  console.log('To jest reqsesion na poczatku', req.session.basketId);
   if (req.session.basketId) {
     try {
       const result = await Order
-        .find({basketId: req.session.basketId});
-      if(!result) res.status(404).json({ post: 'Not found' });
+        .find({basketId: req.session.basketId, status: 'basket'});
+      if(!result) res.json({});
       else res.json(result);
     }
     catch(err) {
@@ -29,6 +28,35 @@ router.get('/orders/basket', async (req, res) => {
     }
   } else res.json({});
 });
+
+router.post('/orders/basket/:id', async (req, res) => {
+  const { imie, nazwisko, ulica, nrDomu, nrMieszkania, kodPocztowy, miejscowosc, email } = req.body;
+
+  if(imie && nazwisko && ulica && nrDomu && kodPocztowy && miejscowosc && email) {
+    await Order.updateOne({ _id: (req.params.id) }, { $set: { status: 'confirmed', imie: imie, nazwisko: nazwisko, ulica: ulica, nrDomu: nrDomu, kodPocztowy: kodPocztowy, miejscowosc: miejscowosc, nrMieszkania: nrMieszkania }});
+    const ord = await Order.findById(req.params.id);
+    console.log('Zmienione zamówienie', ord);
+    res.send('Zamówienie zostało wysłane');
+  }
+  else {
+    res.send('Zostawiłes puste wymagane pola!');
+  }
+});
+
+router.get('/orders/basket', async (req, res) => {
+  if (req.session.basketId) {
+    try {
+      const result = await Order
+        .find({basketId: req.session.basketId, status: 'basket'});
+      if(!result) res.json({});
+      else res.json(result);
+    }
+    catch(err) {
+      res.status(500).json(err);
+    }
+  } else res.json({});
+});
+
 
 router.get('/orders/:id', async (req, res) => {
   try {
@@ -43,25 +71,34 @@ router.get('/orders/:id', async (req, res) => {
 });
 
 router.post('/orders/basket', async (req, res) => {
-  // console.log('body', req.body);
   req.session.basket= {
     id: req.body.basketId,
   };
-  // console.log('To', req.session.basket.id);
   res.json(req.session);
 });
 
 
 router.put('/orders/basket', async (req, res) => {
-  console.log('To jest reqsesion pozniej', req.session.basketId);
-  const { products } = req.body;
-  try {
-    await Order.updateOne({ basketId: (req.session.basketId) }, { $set: { products: products}});
-    const result = await Order.find({ basketId: req.session.basketId });
-    res.json(result);
-  }
-  catch(err) {
-    res.status(500).json({ message: err });
+  const { products, status, basketId } = req.body;
+
+  if (status && basketId && !products) {
+    try {
+      await Order.updateOne({ basketId: (req.session.basketId) }, { $set: { status: status}});
+      // const result = await Order.find({ basketId: req.session.basketId });
+      res.redirect('/formula/' + basketId);
+    }
+    catch(err) {
+      res.status(500).json({ message: err });
+    }
+  } else{
+    try {
+      await Order.updateOne({ basketId: (req.session.basketId) }, { $set: { products: products}});
+      const result = await Order.find({ basketId: req.session.basketId });
+      res.json(result);
+    }
+    catch(err) {
+      res.status(500).json({ message: err });
+    }
   }
 
 });
@@ -69,11 +106,9 @@ router.put('/orders/basket', async (req, res) => {
 router.post('/orders', async (req, res) => {
   const { product, basketId } = req.body;
   req.session.basketId = basketId;
-  console.log('ustawiono', req.session.id);
   if (!req.session.basket) {
     try {
-      // console.log('req body do zmowienia', req.body);
-      const newOrder = new Order({ products: [product], status: 'basket',  basketId: basketId });
+      const newOrder = new Order({ products: product, status: 'basket',  basketId: basketId });
       await newOrder.save();
       res.json(newOrder);
     } catch(err) {

@@ -1,6 +1,5 @@
 import Axios from 'axios';
 
-
 /* selectors */
 export const getOrders = ({orders}) => orders.data;
 export const getBasket = ({orders}) => orders.basket;
@@ -21,6 +20,8 @@ const DELETE_PRODUCT = createActionName('DELETE_PRODUCT');
 const SET_BASKET = createActionName('SET_BASKET');
 const ADD_ORDER = createActionName('ADD_ORDER');
 const SET_ID = createActionName('SET_ID');
+const SET_STATUS = createActionName('SET_STATUS');
+const EMPTY_BASKET = createActionName('EMPTY_BASKET');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
@@ -33,6 +34,8 @@ export const deleteOne = payload => ({payload, type: DELETE_PRODUCT});
 export const setBasket = payload => ({payload, type: SET_BASKET});
 export const addNewOrder = payload => ({payload, type: ADD_ORDER});
 export const setId = payload => ({payload, type: SET_ID});
+export const setStatus = payload => ({payload, type: SET_STATUS});
+export const emptyBasket = payload => ({payload, type: EMPTY_BASKET});
 
 
 /* thunk creators */
@@ -65,11 +68,14 @@ export const fetchBasket = () => {
       Axios
         .get('http://localhost:8000/api/orders/basket')
         .then(res => {
-          console.log('ta ważna resdata', res.data);
-          dispatch(setBasket(res.data));
+          console.log('res.data', res.data);
+          res.data ?
+            dispatch(setBasket(res.data)) :
+            dispatch(emptyBasket({}));
         })
         .catch(err => {
           dispatch(fetchError(err.message || true));
+          dispatch(emptyBasket({}));
         });
     }
   };
@@ -89,7 +95,6 @@ export const addProdToBasket = (obj, id) => {
       Axios
         .post('http://localhost:8000/api/orders', { product: obj, basketId: id })
         .then(res => {
-          console.log('res data', res.data);
           dispatch(addNewOrder(res.data));
         })
         .catch(err => {
@@ -103,7 +108,7 @@ export const addProdToBasket = (obj, id) => {
       Axios
         .put('http://localhost:8000/api/orders/basket', { products: obj })
         .then(res => {
-          dispatch(setBasket(res.data));
+          dispatch(setAmount(obj));
         })
         .catch(err => {
           dispatch(fetchError(err.message || true));
@@ -122,7 +127,6 @@ export const changeAmount = (obj) => {
       .put('http://localhost:8000/api/orders/basket', {products: obj})
       .then(res => {
         dispatch(setBasket(res.data));
-        console.log('dsfds', res.data);
       })
       .catch(err => {
         dispatch(fetchError(err.message || true));
@@ -138,8 +142,7 @@ export const deleteProduct = (obj) => {
     Axios
       .put('http://localhost:8000/api/orders/basket', {products: obj.elements ? obj.elements : [] })
       .then(res => {
-        dispatch(setBasket(res.data));
-        console.log('dsfds', res.data);
+        dispatch(setAmount(obj.elements));
       })
       .catch(err => {
         dispatch(fetchError(err.message || true));
@@ -147,6 +150,37 @@ export const deleteProduct = (obj) => {
 
   };
 };
+
+export const changeStatus = (status) => {
+  return (dispatch) => {
+    Axios
+      .put('http://localhost:8000/api/orders/basket', {status: status})
+      .then(res => {
+
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+
+  };
+};
+
+export const actualizeComment = (products) => {
+  return (dispatch) => {
+    dispatch(addToBasket(products));
+
+    Axios
+      .put('http://localhost:8000/api/orders/basket', {products: products})
+      .then(res => {
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+
+  };
+};
+
+
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
@@ -182,24 +216,18 @@ export const reducer = (statePart = [], action = {}) => {
     case CHANGE_AMOUNT: {
       return {
         ...statePart,
-        // basket: {...statePart.basket, products: statePart.basket.products.map(product => (product._id !== action.payload.id) ? product :
-        //   {...product, amount: action.payload.amount})},
         basket: {...statePart.basket, products: action.payload},
       };
     }
     case ADD_TO_BASKET: {
       return {
         ...statePart,
-        // data: statePart.data.map(order => (order.status !== 'basket') ? order :
-        //   {...order, products: [...order.products, action.payload]}),
         basket: {...statePart.basket, products: action.payload},
       };
     }
     case DELETE_PRODUCT: {
       return {
         ...statePart,
-        // data: statePart.data.map(order => (order.status !== 'basket') ? order :
-        //   {...order, products: order.products.filter(product => product.name !== action.payload.name)}
         basket: {...statePart.basket, products: statePart.basket.products.filter(product => product._id !== action.payload)},
       };
     }
@@ -213,12 +241,25 @@ export const reducer = (statePart = [], action = {}) => {
       return {
         ...statePart,
         data: [...statePart.data, action.payload],
+        basket: action.payload,
       };
     }
     case SET_ID: {
       return {
         ...statePart,
         basket: {...statePart.basket, id: action.payload.basketId},
+      };
+    }
+    case SET_STATUS: {
+      return {
+        ...statePart,
+        basket: {...statePart.basket, status: action.payload},
+      };
+    }
+    case EMPTY_BASKET: {
+      return {
+        ...statePart,
+        basket: action.payload,
       };
     }
     default:

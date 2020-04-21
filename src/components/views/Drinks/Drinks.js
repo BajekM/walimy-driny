@@ -28,29 +28,9 @@ const Component = ({className, drinks, fetchPublishedDrinks, loading, tags, addN
 
   // Filtering
 
-  // const handleTags = (tag, isChecked) => {
-  //   let tagsArray;
-  //   tags.length > 0 ?
-  //     tagsArray = tags :
-  //     tagsArray = [];
-  //   // const tagsArray = [];
-  //   if (isChecked) {
-  //     tagsArray.push(tag);
-  //   }
-  //   else{
-  //     if (tagsArray.includes(tag)) {
-  //       tagsArray.splice(tagsArray.indexOf(tag), 1);
-  //     }
-  //   }
-  //   console.log('tagsArray', tagsArray);
-  //   setTags(tagsArray);
-  //   console.log('State', tags);
-  // };
-
 
   const filter = (items) => {
     const filtered = [];
-    console.log('tags redux', tags);
 
     if (tags.length !== 0) {
 
@@ -65,7 +45,6 @@ const Component = ({className, drinks, fetchPublishedDrinks, loading, tags, addN
           }
         }
       }
-      console.log(filtered);
       return filtered;
     } else return items;
   };
@@ -73,9 +52,6 @@ const Component = ({className, drinks, fetchPublishedDrinks, loading, tags, addN
 
   const [currentPage, setCurrentPage] = useState(1);
   const [drinksPerPage] = useState(3);
-  // const [filteredDrinks, filterDrinks] = useState(drinks);
-  // const [tags, setTags] = useState([]);
-
 
 
   // Get current drinks
@@ -83,7 +59,6 @@ const Component = ({className, drinks, fetchPublishedDrinks, loading, tags, addN
   const indexOfFirstPost = indexOfLastPost - drinksPerPage;
   const currentDrinks = filter(drinks).slice(indexOfFirstPost, indexOfLastPost);
 
-  console.log('current', currentDrinks);
 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -91,7 +66,6 @@ const Component = ({className, drinks, fetchPublishedDrinks, loading, tags, addN
   const paginatePrevious = () => setCurrentPage(currentPage - 1);
 
   fetchPublishedDrinks();
-  console.log('loading', loading.active);
 
   if(loading.active || !drinks.length){
     return (

@@ -6,6 +6,7 @@ const passport = require('passport');
 const session = require('express-session');
 const passportConfig = require('../config/passport');
 const MongoStore = require('connect-mongo')(session);
+require('dotenv').config();
 
 const drinksRoutes = require('./routes/drinks.routes');
 const ordersRoutes = require('./routes/orders.routes');
@@ -16,7 +17,7 @@ const userRoutes = require('./routes/user.routes');
 const app = express();
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/walimyDriny', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://' + process.env.DB_LOGIN + ':' + process.env.DB_PASSWORD + '@cluster0-4ieif.mongodb.net/WalimyDriny?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');
@@ -48,7 +49,6 @@ app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 
 
-
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
   res.status(404).send({ post: 'Not found...' });
@@ -59,7 +59,6 @@ app.use(express.static(path.join(__dirname, '../build')));
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 });
-
 
 
 /* START SERVER */

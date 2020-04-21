@@ -17,11 +17,11 @@ import { connect } from 'react-redux';
 import { getUser, fetchUser, logOut } from '../../../redux/userRedux';
 
 import styles from './TopBar.module.scss';
-import { getBasket, changeAmount, deleteProduct, fetchBasket, getLoadingState } from '../../../redux/ordersRedux';
+import { getBasket, changeAmount, deleteProduct, fetchBasket, getLoadingState, changeStatus, actualizeComment } from '../../../redux/ordersRedux';
 
 
 
-const Component = ({className, user, getLoggedUser, getLoggedOut, basket, setAmount, deleteFromBasket, getBasketOrder, loading}) => {
+const Component = ({className, user, getLoggedUser, getLoggedOut, basket, setAmount, deleteFromBasket, getBasketOrder, loading, actualiseStatus, setComment }) => {
   getLoggedUser();
   getBasketOrder();
   // console.log('user', user);
@@ -88,7 +88,7 @@ const Component = ({className, user, getLoggedUser, getLoggedOut, basket, setAmo
                       value= {product.amount}
                       onChange= {e => setAmount(
                         basket.products.map(item =>
-                          item._id !== product._id ?
+                          item._id !== product._id && product.params !== item.params?
                             item : {...item, amount: e.target.value}
                         ))}
                       InputLabelProps={{
@@ -100,10 +100,18 @@ const Component = ({className, user, getLoggedUser, getLoggedOut, basket, setAmo
                         max: 99,
                       }}
                     />
-                    <div className='col-md-3 col-sm-6'><span>{product.name}</span></div>
-                    <div className='col-md-4 col-sm-12 my-4'><TextareaAutosize className='w-100' aria-label='empty textarea' placeholder='Uwagi'/></div>
+
+                    <div className='col-md-3 col-sm-6'>
+                      <span>{product.name}</span>
+                      {product.params ?
+                        product.params.map(param =>
+                          <div key ={param.name}>{param.name}:{param.ordered}</div>
+                        ) : ''
+                      }
+                    </div>
+                    <div className='col-md-4 col-sm-12 my-4'><TextareaAutosize onChange={e => setComment(basket.products.map(item => item._id !== product._id && item.params !== product.params ? item : {...item, comment: e.target.value}))} className='w-100' aria-label='empty textarea' placeholder='Uwagi'/></div>
                     <div className='col-md-2 col-sm-6'>{product.price * product.amount}zł</div>
-                    <div className='col-md-1 col-sm-6' onClick={() => deleteFromBasket({elements: basket.products.filter(item => item._id !== product._id), productId: product._id})}>
+                    <div className='col-md-1 col-sm-6' onClick={() => deleteFromBasket({elements: basket.products.filter(item => item._id !== product._id && item.params !== product.params), productId: product._id})}>
                       <Icon name={'trash'}></Icon>
                     </div>
                   </div>
@@ -111,7 +119,7 @@ const Component = ({className, user, getLoggedUser, getLoggedOut, basket, setAmo
                 <div className={clsx('px-3 py-3 d-flex justify-content-end align-tems-center', styles.total)}>
                   <div className='px-2'>Kwota: </div>
                   <div className='px-2 d-flex'>{basket.products ? calculatePrice(basket.products): 0}zł</div>
-                  <div className='text-right'><button className='mr-4 px-2 py-1'>Zamów</button></div>
+                  <div className='text-right'><a href= {basket.products.length > 0 ?  '/formula/' + basket._id : '#'} ><button onClick={() => basket.products.length > 0 ?  actualiseStatus() : window.alert('Kosz jest pusty')} className='mr-4 px-2 py-1'>Zamów</button></a></div>
                 </div>
               </div> : ''
             }
@@ -137,6 +145,8 @@ Component.propTypes = {
   deleteFromBasket: PropTypes.func,
   getBasketOrder: PropTypes.func,
   loading: PropTypes.object,
+  actualiseStatus: PropTypes.func,
+  setComment: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -151,6 +161,8 @@ const mapDispatchToProps = dispatch => ({
   setAmount: (obj) => dispatch(changeAmount(obj)),
   deleteFromBasket: (product) => dispatch(deleteProduct(product)),
   getBasketOrder: () => dispatch(fetchBasket()),
+  actualiseStatus: () => dispatch(changeStatus('in progress')),
+  setComment: (products) => dispatch(actualizeComment(products)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

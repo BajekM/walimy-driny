@@ -42,7 +42,7 @@ export const settings =  {
     {
       id: 2,
       text: 'Kup profesjonalny sprzęt i serwój drinki jak zawodowy barman! ',
-      image: '',
+      image: 'https://cdn.pixabay.com/photo/2018/06/21/20/14/restaurant-3489365_960_720.jpg',
     },
 
     {
@@ -57,11 +57,11 @@ export const settings =  {
       image: 'https://images.unsplash.com/photo-1560867486-c5c696b93505?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=775&q=80',
     },
 
-    {
-      id: 5,
-      text: 'Sprawdz swoją wiedzę o barmaństwie!',
-      image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-    },
+    // {
+    //   id: 5,
+    //   text: 'Sprawdz swoją wiedzę o barmaństwie!',
+    //   image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+    // },
   ],
 
   contactData : {

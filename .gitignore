@@ -24,3 +24,6 @@ yarn-error.log*
 
 # Nodemon
 nodemon.json
+
+# Env variables
+.env
