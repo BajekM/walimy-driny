@@ -6,7 +6,29 @@
     <title>Walimy Driny</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBAguxqYV7CazivVPWOHUWC9BfSczeicpU",
+    authDomain: "walimy-driny.firebaseapp.com",
+    databaseURL: "https://walimy-driny.firebaseio.com",
+    projectId: "walimy-driny",
+    storageBucket: "walimy-driny.appspot.com",
+    messagingSenderId: "1062087543101",
+    appId: "1:1062087543101:web:f478e4932a49eb704e5d54",
+    measurementId: "G-3WXSFT3MYX"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
     <div id="root"></div>
   </body>
 </html>
