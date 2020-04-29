@@ -27,3 +27,8 @@ nodemon.json
 
 # Env variables
 .env
+
+# Firebase
+.firebase.json
+.firebaserc
+/functions

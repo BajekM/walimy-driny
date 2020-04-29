@@ -119,7 +119,7 @@ const Component = ({className, user, getLoggedUser, getLoggedOut, basket, setAmo
                 <div className={clsx('px-3 py-3 d-flex justify-content-end align-tems-center', styles.total)}>
                   <div className='px-2'>Kwota: </div>
                   <div className='px-2 d-flex'>{basket.products ? calculatePrice(basket.products): 0}zł</div>
-                  <div className='text-right'><a href= {basket.products.length > 0 ?  '/formula/' + basket._id : '#'} ><button onClick={() => basket.products.length > 0 ?  actualiseStatus() : window.alert('Kosz jest pusty')} className='mr-4 px-2 py-1'>Zamów</button></a></div>
+                  <div className='text-right'><a href= {basket.products ?  '/formula/' + basket._id : '#'} ><button onClick={() => basket.products.length > 0 ?  actualiseStatus() : window.alert('Kosz jest pusty')} className='mr-4 px-2 py-1'>Zamów</button></a></div>
                 </div>
               </div> : ''
             }

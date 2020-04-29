@@ -8,6 +8,7 @@ const passportConfig = require('../config/passport');
 const MongoStore = require('connect-mongo')(session);
 require('dotenv').config();
 
+
 const drinksRoutes = require('./routes/drinks.routes');
 const ordersRoutes = require('./routes/orders.routes');
 const productsRoutes = require('./routes/products.routes');
@@ -66,3 +67,5 @@ const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log('Server is running on port: '+port);
 });
+
+
